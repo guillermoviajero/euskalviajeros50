@@ -29,6 +29,8 @@ El sitio web está implementado en `index.html` con un diseño moderno, responsi
   - *Dudas Frecuentes (FAQ)*: Acordeón interactivo con respuestas transparentes.
   - *Formulario de Contacto*: Registro sencillo para asistir a un primer café informativo.
 
+- **Contacto oficial:** `guillermoviajero59@gmail.com`
+
 ---
 
 ## 🚀 Cómo Publicar la Web en GitHub Pages

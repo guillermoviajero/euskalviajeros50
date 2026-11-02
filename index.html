@@ -93,9 +93,9 @@
           <button id="btnTextNormal" onclick="setFontSize('normal')" class="px-2 py-0.5 text-xs font-bold rounded bg-emerald-600 text-white shadow-sm transition hover:bg-emerald-500" title="Tamaño de letra estándar">A</button>
           <button id="btnTextLarge" onclick="setFontSize('large')" class="px-2 py-0.5 text-xs font-bold rounded bg-emerald-950 text-emerald-300 transition hover:bg-emerald-800" title="Tamaño de letra grande para lectura descansada">A+</button>
         </div>
-        <a href="#contacto" class="hover:text-white transition flex items-center gap-1">
+        <a href="mailto:guillermoviajero59@gmail.com" class="hover:text-white transition flex items-center gap-1.5 font-medium">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-          <span class="hidden md:inline">info@euskalviajeros50.eus</span>
+          <span>guillermoviajero59@gmail.com</span>
         </a>
       </div>
     </div>
@@ -737,7 +737,7 @@
         
         <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-xl border border-stone-200">
           
-          <div class="text-center max-w-2xl mx-auto mb-8 space-y-2">
+          <div class="text-center max-w-2xl mx-auto mb-8 space-y-3">
             <span class="inline-block text-xs font-bold text-euskal-800 uppercase tracking-widest bg-euskal-100 px-3 py-1 rounded-full">
               Ponte en Contacto
             </span>
@@ -745,12 +745,23 @@
               Da el primer paso: te invitamos a conocernos
             </h2>
             <p class="text-stone-600 text-sm sm:text-base">
-              Rellena este breve formulario y te escribiremos o llamaremos para invitarte al próximo café o darte más detalles sobre el grupo.
+              Rellena este breve formulario y tu solicitud llegará directamente a nuestro correo del grupo para invitarte al próximo café o darte más detalles.
             </p>
+            <div class="inline-flex items-center gap-2 bg-warm-100 border border-warm-200 px-4 py-2 rounded-xl text-stone-800 text-sm">
+              <svg class="w-4 h-4 text-euskal-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              <span>Correo de contacto directo:</span>
+              <a href="mailto:guillermoviajero59@gmail.com" class="font-bold text-euskal-800 hover:text-euskal-700 underline">
+                guillermoviajero59@gmail.com
+              </a>
+            </div>
           </div>
 
           <!-- Formulario -->
           <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-6">
+            <!-- Configuración FormSubmit para recepción directa en guillermoviajero59@gmail.com -->
+            <input type="hidden" name="_subject" value="Nueva solicitud de viajero/a - Euskal Viajeros +50">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
             
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
               
@@ -814,13 +825,25 @@
 
             <!-- Botón de Envío -->
             <div class="pt-2">
-              <button type="submit" class="w-full py-4 rounded-xl font-bold text-white bg-euskal-800 hover:bg-euskal-700 shadow-md shadow-euskal-900/20 text-lg transition flex items-center justify-center gap-2">
-                <span>Enviar solicitud y asistir a un café</span>
+              <button type="submit" id="submitBtn" class="w-full py-4 rounded-xl font-bold text-white bg-euskal-800 hover:bg-euskal-700 shadow-md shadow-euskal-900/20 text-lg transition flex items-center justify-center gap-2">
+                <svg id="submitSpinner" class="hidden animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <span id="submitText">Enviar solicitud para asistir a un café</span>
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
               </button>
             </div>
 
           </form>
+
+          <!-- Fallback en caso de incidencia -->
+          <div id="formError" class="hidden mt-4 p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-sm">
+            <p class="font-semibold">Ha ocurrido un problema de conexión al enviar el formulario.</p>
+            <p class="mt-1">Puedes enviar los datos directamente haciendo clic aquí: 
+              <a id="fallbackMailto" href="mailto:guillermoviajero59@gmail.com" class="font-bold underline text-amber-950">Enviar a guillermoviajero59@gmail.com</a>
+            </p>
+          </div>
 
           <!-- Mensaje de Éxito Oculto -->
           <div id="formSuccess" class="hidden mt-6 p-6 rounded-2xl bg-emerald-50 border border-emerald-200 text-center space-y-2">
@@ -829,7 +852,7 @@
             </div>
             <h3 class="font-display font-bold text-xl text-emerald-950">¡Eskerrik asko por contactar!</h3>
             <p class="text-emerald-800 text-sm max-w-md mx-auto">
-              Hemos recibido tu información. Un compañero o compañera del grupo se pondrá en contacto contigo muy pronto para invitarte al próximo café presencial.
+              Tu solicitud ha sido enviada correctamente a <strong>guillermoviajero59@gmail.com</strong>. Un compañero o compañera del grupo te responderá muy pronto para invitarte al próximo café presencial.
             </p>
           </div>
 
@@ -859,7 +882,10 @@
           <a href="#como-funciona" class="hover:text-white transition">Cómo Funciona</a>
           <a href="#reuniones" class="hover:text-white transition">Reuniones</a>
           <a href="#faq" class="hover:text-white transition">Preguntas Frecuentes</a>
-          <a href="#contacto" class="hover:text-white transition">Contacto</a>
+          <a href="mailto:guillermoviajero59@gmail.com" class="text-amber-400 hover:text-amber-300 transition flex items-center gap-1 font-semibold">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            <span>guillermoviajero59@gmail.com</span>
+          </a>
         </div>
       </div>
 
@@ -952,19 +978,69 @@
       setFontSize('large');
     }
 
-    // Envío del Formulario
-    function handleFormSubmit(e) {
+    // Envío del Formulario a guillermoviajero59@gmail.com
+    async function handleFormSubmit(e) {
       e.preventDefault();
       const form = document.getElementById('contactForm');
+      const submitBtn = document.getElementById('submitBtn');
+      const submitText = document.getElementById('submitText');
+      const submitSpinner = document.getElementById('submitSpinner');
       const success = document.getElementById('formSuccess');
-      
-      // Feedback visual
-      form.classList.add('opacity-40', 'pointer-events-none');
-      setTimeout(() => {
-        form.classList.add('hidden');
-        success.classList.remove('hidden');
-        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }, 500);
+      const errorBox = document.getElementById('formError');
+      const fallbackMailto = document.getElementById('fallbackMailto');
+
+      const data = {
+        _subject: "Nueva solicitud de viajero/a - Euskal Viajeros +50",
+        _template: "table",
+        _captcha: "false",
+        nombre: form.nombre.value,
+        telefono: form.telefono.value,
+        email: form.email.value || 'No proporcionado',
+        ciudad: form.ciudad.value,
+        intereses: form.intereses.value || 'No especificado',
+        mensaje: form.mensaje.value || 'Sin comentarios adicionales'
+      };
+
+      // Preparar enlace de respaldo por si falla la conexión
+      const mailtoBody = `Nombre: ${data.nombre}%0D%0ATeléfono: ${data.telefono}%0D%0ACorreo: ${data.email}%0D%0ACiudad: ${data.ciudad}%0D%0AIntereses: ${data.intereses}%0D%0AMensaje: ${data.mensaje}`;
+      if (fallbackMailto) {
+        fallbackMailto.href = `mailto:guillermoviajero59@gmail.com?subject=Solicitud de Viajero/a EuskalViajeros +50&body=${mailtoBody}`;
+      }
+
+      // Estado enviando
+      if (submitBtn) submitBtn.disabled = true;
+      if (submitText) submitText.textContent = "Enviando solicitud...";
+      if (submitSpinner) submitSpinner.classList.remove('hidden');
+      if (errorBox) errorBox.classList.add('hidden');
+
+      try {
+        const response = await fetch("https://formsubmit.co/ajax/guillermoviajero59@gmail.com", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+          form.classList.add('hidden');
+          success.classList.remove('hidden');
+          success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          throw new Error("Error en la respuesta del servidor");
+        }
+      } catch (err) {
+        console.warn("Fallo en envío directo:", err);
+        if (errorBox) {
+          errorBox.classList.remove('hidden');
+          if (submitBtn) submitBtn.disabled = false;
+          if (submitText) submitText.textContent = "Reintentar envío";
+          if (submitSpinner) submitSpinner.classList.add('hidden');
+        } else {
+          window.location.href = `mailto:guillermoviajero59@gmail.com?subject=Solicitud Euskal Viajeros +50&body=${mailtoBody}`;
+        }
+      }
     }
   </script>
 </body>
