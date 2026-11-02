@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Euskal Viajeros +50 | Viajes Compartidos y Apoyo Mutuo en Euskal Herria</title>
+  <meta name="description" content="Comunidad de viajeros y viajeras mayores de 50 años en Euskal Herria. Compartimos experiencias de viaje, nos preparamos en reuniones presenciales y nos apoyamos mutuamente.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            euskal: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              200: '#bbf7d0',
+              600: '#16a34a',
+              700: '#15803d',
+              800: '#166534',
+              900: '#14532d',
+              950: '#052e16',
+            },
+            warm: {
+              50: '#fdfbf7',
+              100: '#f7f2ea',
+              200: '#efe6d5',
+              700: '#b45309',
+              800: '#92400e',
+              900: '#78350f',
+            },
+            slateCustom: {
+              850: '#151e2e',
+              900: '#0f172a',
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            display: ['"Outfit"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Transiciones suaves y accesibilidad */
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #1f2937;
+      background-color: #fdfbf7;
+    }
+    .font-size-large {
+      font-size: 112.5%;
+    }
+    .font-size-large p, .font-size-large li, .font-size-large span {
+      line-height: 1.75;
+    }
+    .hero-pattern {
+      background-color: #0f291e;
+      background-image: radial-gradient(#2d6a4f 0.8px, transparent 0.8px), radial-gradient(#2d6a4f 0.8px, #0f291e 0.8px);
+      background-size: 32px 32px;
+      background-position: 0 0, 16px 16px;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-euskal-100 selection:text-euskal-900">
+
+  <!-- BARRA SUPERIOR DE ACCESIBILIDAD Y CONTACTO RÁPIDO -->
+  <aside class="bg-euskal-950 text-emerald-100 text-xs sm:text-sm py-2 px-4 border-b border-emerald-900/40">
+    <div class="max-w-7xl mx-auto flex justify-between items-center flex-wrap gap-2">
+      <div class="flex items-center gap-2">
+        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-emerald-800 text-emerald-100">
+          Euskal Herria
+        </span>
+        <span class="hidden sm:inline">🌱 Comunidad no lucrativa de personas +50 para viajar acompañadas</span>
+      </div>
+      <div class="flex items-center gap-4 ml-auto">
+        <!-- Control de Accesibilidad Tamaño Texto -->
+        <div class="flex items-center gap-1.5 bg-emerald-900/60 px-2 py-1 rounded border border-emerald-700/50">
+          <span class="text-xs text-emerald-300 font-medium">Tamaño letra:</span>
+          <button id="btnTextNormal" onclick="setFontSize('normal')" class="px-2 py-0.5 text-xs font-bold rounded bg-emerald-600 text-white shadow-sm transition hover:bg-emerald-500" title="Tamaño de letra estándar">A</button>
+          <button id="btnTextLarge" onclick="setFontSize('large')" class="px-2 py-0.5 text-xs font-bold rounded bg-emerald-950 text-emerald-300 transition hover:bg-emerald-800" title="Tamaño de letra grande para lectura descansada">A+</button>
+        </div>
+        <a href="#contacto" class="hover:text-white transition flex items-center gap-1">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          <span class="hidden md:inline">info@euskalviajeros50.eus</span>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- NAVEGACIÓN PRINCIPAL -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-stone-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Logotipo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-euskal-800 to-emerald-600 flex items-center justify-center text-white shadow-md shadow-emerald-900/20 group-hover:scale-105 transition-transform">
+          <!-- Icono Brújula & Camino -->
+          <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor" fill-opacity="0.2"/>
+          </svg>
+        </div>
+        <div>
+          <span class="font-display font-bold text-xl sm:text-2xl text-stone-900 tracking-tight flex items-center gap-1.5">
+            EuskalViajeros <span class="text-euskal-700 bg-euskal-50 px-1.5 py-0.5 rounded-lg text-lg sm:text-xl font-extrabold border border-euskal-200">+50</span>
+          </span>
+          <span class="block text-xs font-medium text-stone-500">Bidelagunak · Experiencias & Apoyo Mutuo</span>
+        </div>
+      </a>
+
+      <!-- Menú Desktop -->
+      <nav class="hidden lg:flex items-center gap-7 text-stone-700 font-medium">
+        <a href="#filosofia" class="hover:text-euskal-700 transition">Nuestra Filosofía</a>
+        <a href="#como-funciona" class="hover:text-euskal-700 transition">Cómo Funciona</a>
+        <a href="#reuniones" class="hover:text-euskal-700 transition flex items-center gap-1.5">
+          <span>Reuniones Presenciales</span>
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        </a>
+        <a href="#destinos" class="hover:text-euskal-700 transition">Destinos</a>
+        <a href="#faq" class="hover:text-euskal-700 transition">Dudas Frecuentes</a>
+      </nav>
+
+      <!-- Botón de Acción -->
+      <div class="hidden sm:flex items-center gap-3">
+        <a href="#contacto" class="inline-flex items-center justify-center px-5 py-2.5 rounded-xl font-semibold text-white bg-euskal-800 hover:bg-euskal-700 shadow-md shadow-euskal-900/10 hover:shadow-lg transition transform hover:-translate-y-0.5">
+          <span>Conocernos y Participar</span>
+          <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+      </div>
+
+      <!-- Botón Menú Móvil -->
+      <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-xl text-stone-700 hover:bg-stone-100 transition focus:outline-none" aria-label="Abrir menú">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+      </button>
+    </div>
+
+    <!-- Menú Desplegable Móvil -->
+    <div id="mobileMenu" class="hidden lg:hidden border-t border-stone-200 bg-white px-4 pt-3 pb-6 space-y-3 shadow-xl">
+      <a href="#filosofia" onclick="toggleMobileMenu()" class="block py-2 text-stone-800 font-medium hover:text-euskal-700">Nuestra Filosofía</a>
+      <a href="#como-funciona" onclick="toggleMobileMenu()" class="block py-2 text-stone-800 font-medium hover:text-euskal-700">Cómo Funciona</a>
+      <a href="#reuniones" onclick="toggleMobileMenu()" class="block py-2 text-stone-800 font-medium hover:text-euskal-700">Reuniones Presenciales</a>
+      <a href="#destinos" onclick="toggleMobileMenu()" class="block py-2 text-stone-800 font-medium hover:text-euskal-700">Destinos</a>
+      <a href="#faq" onclick="toggleMobileMenu()" class="block py-2 text-stone-800 font-medium hover:text-euskal-700">Dudas Frecuentes</a>
+      <div class="pt-2">
+        <a href="#contacto" onclick="toggleMobileMenu()" class="block w-full text-center py-3 rounded-xl font-semibold text-white bg-euskal-800 hover:bg-euskal-700">
+          Unirme a una reunión
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+    <!-- HERO SECTION -->
+    <section class="hero-pattern text-white py-16 sm:py-24 relative overflow-hidden">
+      <!-- Glow ambiental decorativo -->
+      <div class="absolute -top-32 -left-32 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <!-- Texto Principal -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-800/60 border border-emerald-500/30 text-emerald-200 text-sm font-medium">
+              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+              Red de apoyo y viajes compartidos · Euskal Herria
+            </div>
+
+            <h1 class="font-display text-3xl sm:text-5xl lg:text-5xl font-extrabold tracking-tight leading-tight text-stone-50">
+              Viajar en buena compañía, a nuestro ritmo y con <span class="text-emerald-400 underline decoration-amber-400 decoration-wavy decoration-2">apoyo mutuo</span>.
+            </h1>
+
+            <p class="text-stone-300 text-lg sm:text-xl font-normal leading-relaxed max-w-2xl">
+              Somos personas mayores de 50 años de Bizkaia, Gipuzkoa, Araba, Nafarroa e Iparralde que nos unimos para viajar sin soledad ni prisas. 
+              <strong class="text-white font-semibold">Nos encontramos en reuniones presenciales antes de cada viaje</strong> para conocernos, preparar cada detalle juntos y asegurarnos de que todos nos sintamos en casa.
+            </p>
+
+            <!-- Pilares Rápidos -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
+              <div class="bg-white/10 backdrop-blur-sm border border-white/10 rounded-xl p-3">
+                <span class="text-amber-400 font-bold block text-lg">100%</span>
+                <span class="text-xs text-stone-300">Reuniones previas en persona</span>
+              </div>
+              <div class="bg-white/10 backdrop-blur-sm border border-white/10 rounded-xl p-3">
+                <span class="text-emerald-400 font-bold block text-lg">8 - 14</span>
+                <span class="text-xs text-stone-300">Viajeros por grupo reducido</span>
+              </div>
+              <div class="bg-white/10 backdrop-blur-sm border border-white/10 rounded-xl p-3 col-span-2 sm:col-span-1">
+                <span class="text-stone-100 font-bold block text-lg">Sin Prisas</span>
+                <span class="text-xs text-stone-300">Ritmo respetuoso y humano</span>
+              </div>
+            </div>
+
+            <!-- Botones CTA -->
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4">
+              <a href="#reuniones" class="inline-flex items-center justify-center px-7 py-3.5 rounded-xl font-bold text-stone-900 bg-amber-400 hover:bg-amber-300 shadow-lg shadow-amber-900/20 transition transform hover:-translate-y-0.5 text-base">
+                <span>Ver Próximas Reuniones</span>
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+              </a>
+              <a href="#como-funciona" class="inline-flex items-center justify-center px-6 py-3.5 rounded-xl font-semibold text-white bg-white/10 hover:bg-white/20 border border-white/20 transition">
+                <span>¿Cómo funciona el grupo?</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Tarjeta Destacada / Resumen Visual -->
+          <div class="lg:col-span-5">
+            <div class="glass-card text-stone-900 rounded-3xl p-6 sm:p-8 shadow-2xl border border-stone-100 relative">
+              <div class="flex items-center justify-between border-b border-stone-200 pb-4 mb-5">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-full bg-euskal-100 flex items-center justify-center text-euskal-800 font-bold">
+                    🤝
+                  </div>
+                  <div>
+                    <h3 class="font-display font-bold text-lg text-stone-900">El Espíritu del Grupo</h3>
+                    <p class="text-xs text-stone-500">Compañerismo activo y cercano</p>
+                  </div>
+                </div>
+                <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800">
+                  +50 Años
+                </span>
+              </div>
+
+              <!-- Citas y compromisos -->
+              <div class="space-y-4">
+                <blockquote class="bg-warm-50 border-l-4 border-euskal-700 p-4 rounded-r-xl">
+                  <p class="text-sm italic text-stone-700 leading-relaxed">
+                    «Muchas veces nos apetece descubrir un lugar, pero no encontramos con quién o no queremos apuntarnos a circuitos turísticos masificados. Aquí nos tomamos un café antes, nos miramos a los ojos y decidimos juntos.»
+                  </p>
+                  <footer class="mt-2 text-xs font-semibold text-stone-500">— Miembro del grupo en Bilbao</footer>
+                </blockquote>
+
+                <div class="space-y-2.5 pt-2 text-sm text-stone-700">
+                  <div class="flex items-start gap-2.5">
+                    <svg class="w-5 h-5 text-euskal-700 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                    <span><strong>Nadie viaja solo/a:</strong> Nos cuidamos desde la estación o aeropuerto hasta el regreso.</span>
+                  </div>
+                  <div class="flex items-start gap-2.5">
+                    <svg class="w-5 h-5 text-euskal-700 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                    <span><strong>Sin fines comerciales:</strong> Cada viajero paga sus gastos directos, con transparencia total.</span>
+                  </div>
+                  <div class="flex items-start gap-2.5">
+                    <svg class="w-5 h-5 text-euskal-700 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                    <span><strong>Espacio para todos:</strong> Convivencia compartida y tiempo libre personal respetado.</span>
+                  </div>
+                </div>
+
+                <div class="pt-4 border-t border-stone-200 flex items-center justify-between text-xs text-stone-500">
+                  <span>Próximas reuniones en:</span>
+                  <span class="font-bold text-stone-800">Bilbao · Donostia · Gasteiz · Iruña</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- VALORES / POR QUÉ ESTE GRUPO -->
+    <section id="filosofia" class="py-16 sm:py-24 bg-warm-50 border-b border-stone-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto space-y-4">
+          <span class="text-euskal-700 font-bold tracking-wider text-xs uppercase bg-euskal-100/70 px-3 py-1 rounded-full">
+            Nuestros Principios
+          </span>
+          <h2 class="font-display text-2xl sm:text-4xl font-extrabold text-stone-900">
+            Una forma diferente, serena y humana de viajar
+          </h2>
+          <p class="text-stone-600 text-base sm:text-lg">
+            A partir de los 50 años valoramos la tranquilidad, las buenas conversaciones, la gastronomía local y, por encima de todo, sentirnos seguros y respetados.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-14">
+          
+          <!-- Valor 1 -->
+          <div class="bg-white rounded-2xl p-7 shadow-sm border border-stone-200 hover:shadow-md transition">
+            <div class="w-14 h-14 rounded-2xl bg-emerald-50 text-euskal-800 flex items-center justify-center mb-5 text-2xl">
+              🤝
+            </div>
+            <h3 class="font-display font-bold text-xl text-stone-900 mb-2">Apoyo Mutuo Real</h3>
+            <p class="text-stone-600 text-sm sm:text-base leading-relaxed">
+              Si alguien tiene un día de menor energía o necesita un descanso, el grupo se adapta con empatía. El objetivo principal es disfrutar juntos, no cumplir un itinerario rígido.
+            </p>
+          </div>
+
+          <!-- Valor 2 -->
+          <div class="bg-white rounded-2xl p-7 shadow-sm border border-stone-200 hover:shadow-md transition">
+            <div class="w-14 h-14 rounded-2xl bg-amber-50 text-amber-800 flex items-center justify-center mb-5 text-2xl">
+              ☕
+            </div>
+            <h3 class="font-display font-bold text-xl text-stone-900 mb-2">Reuniones en Persona</h3>
+            <p class="text-stone-600 text-sm sm:text-base leading-relaxed">
+              No nos gusta viajar con extraños de internet. Quedamos antes en nuestras ciudades para tomar un café, debatir la ruta, conocernos y verificar la compatibilidad del grupo.
+            </p>
+          </div>
+
+          <!-- Valor 3 -->
+          <div class="bg-white rounded-2xl p-7 shadow-sm border border-stone-200 hover:shadow-md transition">
+            <div class="w-14 h-14 rounded-2xl bg-sky-50 text-sky-800 flex items-center justify-center mb-5 text-2xl">
+              🧭
+            </div>
+            <h3 class="font-display font-bold text-xl text-stone-900 mb-2">Transparencia y Autonomía</h3>
+            <p class="text-stone-600 text-sm sm:text-base leading-relaxed">
+              No somos una agencia ni cobramos comisiones. Cada viajero reserva y paga sus billetes y alojamientos directamente, decidiendo en común los presupuestos.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CÓMO FUNCIONA EL GRUPO (PASO A PASO) -->
+    <section id="como-funciona" class="py-16 sm:py-24 bg-white border-b border-stone-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+          <span class="text-euskal-700 font-bold tracking-wider text-xs uppercase bg-euskal-100/70 px-3 py-1 rounded-full">
+            El Procedimiento
+          </span>
+          <h2 class="font-display text-2xl sm:text-4xl font-extrabold text-stone-900">
+            ¿Cómo organizamos un viaje de principio a fin?
+          </h2>
+          <p class="text-stone-600 text-base sm:text-lg">
+            Un método claro, participativo y sin sorpresas para que viajes con total tranquilidad mental.
+          </p>
+        </div>
+
+        <div class="relative">
+          <!-- Línea de conexión vertical en desktop -->
+          <div class="hidden md:block absolute left-1/2 top-8 bottom-8 w-1 bg-stone-200 -translate-x-1/2"></div>
+
+          <div class="space-y-12">
+            
+            <!-- Paso 1 -->
+            <div class="flex flex-col md:flex-row items-center gap-8 relative">
+              <div class="md:w-1/2 md:text-right space-y-2 order-2 md:order-1">
+                <span class="text-xs font-bold text-euskal-700 tracking-wider uppercase">Paso 1</span>
+                <h3 class="font-display font-bold text-xl sm:text-2xl text-stone-900">Propuesta de Destino y Sondeo</h3>
+                <p class="text-stone-600 text-sm sm:text-base leading-relaxed">
+                  Cualquier integrante o coordinador propone un destino adecuado a la temporada (cultural, natural o de descanso). Se abre una encuesta sencilla para conocer el interés y las fechas preferidas.
+                </p>
+              </div>
+              <div class="w-12 h-12 rounded-full bg-euskal-800 text-white font-bold flex items-center justify-center shrink-0 z-10 shadow-lg border-4 border-white order-1 md:order-2">
+                1
+              </div>
+              <div class="md:w-1/2 space-y-2 order-3 bg-stone-50 p-5 rounded-2xl border border-stone-200">
+                <span class="text-xs text-stone-500 font-semibold block">Ejemplo práctico:</span>
+                <p class="text-sm text-stone-700 italic">«Queremos visitar la Toscana en primavera o las islas Azores en septiembre. ¿Quién se anima a estudiarlo?»</p>
+              </div>
+            </div>
+
+            <!-- Paso 2 (Reuniones Presenciales - Destacado) -->
+            <div class="flex flex-col md:flex-row items-center gap-8 relative">
+              <div class="md:w-1/2 space-y-2 order-2 md:order-3">
+                <span class="text-xs font-bold text-amber-700 tracking-wider uppercase">Paso 2 · Clave del Proyecto</span>
+                <h3 class="font-display font-bold text-xl sm:text-2xl text-stone-900">Reuniones Presenciales Previas</h3>
+                <p class="text-stone-600 text-sm sm:text-base leading-relaxed">
+                  Nos citamos en cafeterías o salas céntricas de Bilbao, Donostia, Vitoria o Pamplona. Tomamos un café, nos presentamos, aclaramos el ritmo que queremos llevar y resolvemos todas las inquietudes.
+                </p>
+              </div>
+              <div class="w-12 h-12 rounded-full bg-amber-500 text-stone-950 font-bold flex items-center justify-center shrink-0 z-10 shadow-lg border-4 border-white order-1 md:order-2">
+                2
+              </div>
+              <div class="md:w-1/2 space-y-2 order-3 md:order-1 md:text-right bg-amber-50/60 p-5 rounded-2xl border border-amber-200">
+                <span class="text-xs text-amber-800 font-bold block">Por qué es indispensable:</span>
+                <p class="text-sm text-stone-700">Garantiza confianza mutua, química entre las personas y acuerdos claros sobre habitaciones, transporte y gastos antes de comprometer dinero.</p>
+              </div>
+            </div>
+
+            <!-- Paso 3 -->
+            <div class="flex flex-col md:flex-row items-center gap-8 relative">
+              <div class="md:w-1/2 md:text-right space-y-2 order-2 md:order-1">
+                <span class="text-xs font-bold text-euskal-700 tracking-wider uppercase">Paso 3</span>
+                <h3 class="font-display font-bold text-xl sm:text-2xl text-stone-900">Reservas Directas y Transparentes</h3>
+                <p class="text-stone-600 text-sm sm:text-base leading-relaxed">
+                  Una vez acordado el plan, cada participante reserva directamente sus billetes de avión/tren y abona su parte del alojamiento. Asesoramos en la contratación de seguro de viaje y cancelación.
+                </p>
+              </div>
+              <div class="w-12 h-12 rounded-full bg-euskal-800 text-white font-bold flex items-center justify-center shrink-0 z-10 shadow-lg border-4 border-white order-1 md:order-2">
+                3
+              </div>
+              <div class="md:w-1/2 space-y-2 order-3 bg-stone-50 p-5 rounded-2xl border border-stone-200">
+                <span class="text-xs text-stone-500 font-semibold block">Seguridad:</span>
+                <p class="text-sm text-stone-700">Tú mantienes el control total de tus reservas y documentación médica/de viaje.</p>
+              </div>
+            </div>
+
+            <!-- Paso 4 -->
+            <div class="flex flex-col md:flex-row items-center gap-8 relative">
+              <div class="md:w-1/2 space-y-2 order-2 md:order-3">
+                <span class="text-xs font-bold text-euskal-700 tracking-wider uppercase">Paso 4</span>
+                <h3 class="font-display font-bold text-xl sm:text-2xl text-stone-900">El Viaje y la Convivencia</h3>
+                <p class="text-stone-600 text-sm sm:text-base leading-relaxed">
+                  Viajamos juntos desde el origen o nos encontramos en destino. Caminamos con calma, disfrutamos de la gastronomía y alternamos actividades en grupo con momentos de descanso personal.
+                </p>
+              </div>
+              <div class="w-12 h-12 rounded-full bg-euskal-800 text-white font-bold flex items-center justify-center shrink-0 z-10 shadow-lg border-4 border-white order-1 md:order-2">
+                4
+              </div>
+              <div class="md:w-1/2 space-y-2 order-3 md:order-1 md:text-right bg-stone-50 p-5 rounded-2xl border border-stone-200">
+                <span class="text-xs text-stone-500 font-semibold block">Filosofía de viaje:</span>
+                <p class="text-sm text-stone-700">«Menos kilómetros apresurados, más vivencias auténticas y buena compañía.»</p>
+              </div>
+            </div>
+
+            <!-- Paso 5 -->
+            <div class="flex flex-col md:flex-row items-center gap-8 relative">
+              <div class="md:w-1/2 md:text-right space-y-2 order-2 md:order-1">
+                <span class="text-xs font-bold text-euskal-700 tracking-wider uppercase">Paso 5</span>
+                <h3 class="font-display font-bold text-xl sm:text-2xl text-stone-900">Encuentro de Fotos y Amistad</h3>
+                <p class="text-stone-600 text-sm sm:text-base leading-relaxed">
+                  A la vuelta, organizamos una comida o merienda para ver fotografías, intercambiar recuerdos y mantener el vínculo para próximas salidas.
+                </p>
+              </div>
+              <div class="w-12 h-12 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center shrink-0 z-10 shadow-lg border-4 border-white order-1 md:order-2">
+                5
+              </div>
+              <div class="md:w-1/2 space-y-2 order-3 bg-emerald-50 p-5 rounded-2xl border border-emerald-200">
+                <span class="text-xs text-emerald-800 font-bold block">El resultado:</span>
+                <p class="text-sm text-stone-700">De un viaje nacen amistades duraderas para no volver a quedarse en casa.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECCIÓN REUNIONES PRESENCIALES -->
+    <section id="reuniones" class="py-16 sm:py-24 bg-stone-900 text-white relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <div class="lg:col-span-5 space-y-5">
+            <span class="text-amber-400 font-bold tracking-wider text-xs uppercase bg-amber-400/10 border border-amber-400/20 px-3 py-1 rounded-full">
+              Punto de Encuentro
+            </span>
+            <h2 class="font-display text-2xl sm:text-4xl font-extrabold tracking-tight">
+              ¿Cómo son las reuniones presenciales?
+            </h2>
+            <p class="text-stone-300 text-base sm:text-lg leading-relaxed">
+              Son el corazón de nuestra comunidad. Queremos que antes de subir a un tren o avión conozcas la voz, el humor y la forma de ser de quienes compartirán el viaje contigo.
+            </p>
+
+            <div class="space-y-4 pt-2">
+              <div class="flex items-start gap-3">
+                <div class="w-8 h-8 rounded-lg bg-emerald-800 text-emerald-300 flex items-center justify-center shrink-0 mt-1 font-bold text-sm">
+                  A
+                </div>
+                <div>
+                  <h4 class="font-bold text-white text-base">Ambiente relajado y cercano</h4>
+                  <p class="text-sm text-stone-400">Quedamos en cafeterías tranquilas y accesibles, con buena comunicación en metro o autobús.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <div class="w-8 h-8 rounded-lg bg-emerald-800 text-emerald-300 flex items-center justify-center shrink-0 mt-1 font-bold text-sm">
+                  B
+                </div>
+                <div>
+                  <h4 class="font-bold text-white text-base">Espacio para preguntar sin pudor</h4>
+                  <p class="text-sm text-stone-400">¿Tienes dudas sobre el ritmo de caminar, dietas, habitaciones individuales o compartidas? Todo se habla con total naturalidad.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <div class="w-8 h-8 rounded-lg bg-emerald-800 text-emerald-300 flex items-center justify-center shrink-0 mt-1 font-bold text-sm">
+                  C
+                </div>
+                <div>
+                  <h4 class="font-bold text-white text-base">Sin compromiso forzado</h4>
+                  <p class="text-sm text-stone-400">Puedes asistir a una primera reunión informativa para ver si te encaja el grupo sin obligación de inscribirte en ningún viaje.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ciudades y Próximas Convocatorias -->
+          <div class="lg:col-span-7 space-y-4">
+            <h3 class="font-display font-bold text-xl text-stone-100 flex items-center gap-2">
+              <span>Próximas fechas informativas (Café-Encuentro)</span>
+              <span class="text-xs bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2 py-0.5 rounded">Confirmación previa</span>
+            </h3>
+
+            <!-- Tarjeta Bilbao -->
+            <div class="bg-stone-800/90 border border-stone-700 rounded-2xl p-5 hover:border-emerald-500/50 transition">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div>
+                  <span class="text-xs font-semibold text-emerald-400">BIZKAIA</span>
+                  <h4 class="font-bold text-lg text-white">Bilbao · Centro (Zona Abando / Moyúa)</h4>
+                  <p class="text-xs text-stone-400 mt-0.5">Cafetería tranquila cerca de estación · Presentación de proyectos de primavera</p>
+                </div>
+                <div class="text-right sm:text-right shrink-0">
+                  <span class="inline-block px-3 py-1 bg-stone-700 rounded-lg text-xs font-bold text-stone-200">Jueves, 18:30 h</span>
+                  <a href="#contacto" class="block mt-2 text-xs text-amber-400 hover:text-amber-300 font-semibold underline">Reservar sitio →</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tarjeta Donostia -->
+            <div class="bg-stone-800/90 border border-stone-700 rounded-2xl p-5 hover:border-emerald-500/50 transition">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div>
+                  <span class="text-xs font-semibold text-emerald-400">GIPUZKOA</span>
+                  <h4 class="font-bold text-lg text-white">Donostia - San Sebastián · Centro / Gros</h4>
+                  <p class="text-xs text-stone-400 mt-0.5">Encuentro distendido para debatir rutas de naturaleza y patrimonio</p>
+                </div>
+                <div class="text-right shrink-0">
+                  <span class="inline-block px-3 py-1 bg-stone-700 rounded-lg text-xs font-bold text-stone-200">Sábado, 11:30 h</span>
+                  <a href="#contacto" class="block mt-2 text-xs text-amber-400 hover:text-amber-300 font-semibold underline">Reservar sitio →</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tarjeta Gasteiz & Iruña -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="bg-stone-800/90 border border-stone-700 rounded-2xl p-4 hover:border-emerald-500/50 transition">
+                <span class="text-xs font-semibold text-emerald-400">ARABA</span>
+                <h4 class="font-bold text-base text-white">Vitoria-Gasteiz</h4>
+                <p class="text-xs text-stone-400 mt-1">Plaza de la Virgen Blanca / Centro</p>
+                <div class="mt-3 flex justify-between items-center text-xs">
+                  <span class="text-stone-300">Próxima convocatoria</span>
+                  <a href="#contacto" class="text-amber-400 font-semibold">Consultar</a>
+                </div>
+              </div>
+              <div class="bg-stone-800/90 border border-stone-700 rounded-2xl p-4 hover:border-emerald-500/50 transition">
+                <span class="text-xs font-semibold text-emerald-400">NAFARROA</span>
+                <h4 class="font-bold text-base text-white">Iruña / Pamplona</h4>
+                <p class="text-xs text-stone-400 mt-1">Plaza del Castillo / Casco Antiguo</p>
+                <div class="mt-3 flex justify-between items-center text-xs">
+                  <span class="text-stone-300">Próxima convocatoria</span>
+                  <a href="#contacto" class="text-amber-400 font-semibold">Consultar</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- DESTINOS EN PREPARACIÓN -->
+    <section id="destinos" class="py-16 sm:py-24 bg-warm-50 border-b border-stone-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
+          <div>
+            <span class="text-euskal-700 font-bold tracking-wider text-xs uppercase bg-euskal-100/70 px-3 py-1 rounded-full">
+              Inspiración y Rutas
+            </span>
+            <h2 class="font-display text-2xl sm:text-4xl font-extrabold text-stone-900 mt-2">
+              Ideas y viajes en preparación
+            </h2>
+            <p class="text-stone-600 text-base mt-1">
+              Rutas diseñadas para disfrutar despacio, con buena mesa y sin carreras.
+            </p>
+          </div>
+          <a href="#contacto" class="text-euskal-800 font-bold text-sm hover:text-euskal-700 flex items-center gap-1">
+            <span>¿Tienes una propuesta? Cuéntanosla</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <!-- Destino 1 -->
+          <div class="bg-white rounded-3xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-lg transition flex flex-col">
+            <div class="h-48 bg-gradient-to-tr from-amber-800 to-amber-600 p-6 flex flex-col justify-between text-white relative">
+              <span class="bg-stone-900/40 backdrop-blur-sm self-start text-xs font-semibold px-2.5 py-1 rounded-md">
+                En Fase de Reuniones
+              </span>
+              <div>
+                <span class="text-xs text-amber-200 font-medium">Cultura & Paisaje · Italia</span>
+                <h3 class="font-display font-bold text-2xl">La Toscana Serena</h3>
+              </div>
+            </div>
+            <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+              <p class="text-stone-600 text-sm leading-relaxed">
+                Florencia, Siena y los pueblos de Val d'Orcia a un ritmo sosegado. Alojamiento rural con encanto, paseos fotográficos y degustación tranquila de productos locales.
+              </p>
+              <div class="border-t border-stone-100 pt-4 flex items-center justify-between text-xs text-stone-500">
+                <span>Duración estimada: 7 días</span>
+                <span class="font-bold text-euskal-800">Grupo: 10 personas</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Destino 2 -->
+          <div class="bg-white rounded-3xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-lg transition flex flex-col">
+            <div class="h-48 bg-gradient-to-tr from-emerald-900 to-teal-700 p-6 flex flex-col justify-between text-white relative">
+              <span class="bg-stone-900/40 backdrop-blur-sm self-start text-xs font-semibold px-2.5 py-1 rounded-md">
+                Propuesta Abierta
+              </span>
+              <div>
+                <span class="text-xs text-emerald-200 font-medium">Naturaleza & Relax · Portugal</span>
+                <h3 class="font-display font-bold text-2xl">Islas Azores (São Miguel)</h3>
+              </div>
+            </div>
+            <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+              <p class="text-stone-600 text-sm leading-relaxed">
+                Aguas termales en Furnas, lagunas volcánicas y senderismo de baja dificultad adaptado a todos los ritmos. Aire puro y descanso total.
+              </p>
+              <div class="border-t border-stone-100 pt-4 flex items-center justify-between text-xs text-stone-500">
+                <span>Duración estimada: 8 días</span>
+                <span class="font-bold text-euskal-800">Grupo: 8-12 personas</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Destino 3 -->
+          <div class="bg-white rounded-3xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-lg transition flex flex-col">
+            <div class="h-48 bg-gradient-to-tr from-stone-800 to-stone-600 p-6 flex flex-col justify-between text-white relative">
+              <span class="bg-stone-900/40 backdrop-blur-sm self-start text-xs font-semibold px-2.5 py-1 rounded-md">
+                Escapada Cercana
+              </span>
+              <div>
+                <span class="text-xs text-stone-300 font-medium">Patrimonio & Gastronomía</span>
+                <h3 class="font-display font-bold text-2xl">Serranía y Pueblos Blancos</h3>
+              </div>
+            </div>
+            <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+              <p class="text-stone-600 text-sm leading-relaxed">
+                Ronda, Grazalema y pueblos de arquitectura tradicional. Clima templado fuera de temporada alta para viajar cómodos y sin aglomeraciones.
+              </p>
+              <div class="border-t border-stone-100 pt-4 flex items-center justify-between text-xs text-stone-500">
+                <span>Duración estimada: 5 días</span>
+                <span class="font-bold text-euskal-800">Grupo: 10 personas</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PREGUNTAS FRECUENTES (FAQ ACORDEÓN) -->
+    <section id="faq" class="py-16 sm:py-24 bg-white border-b border-stone-200">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center space-y-3 mb-14">
+          <span class="text-euskal-700 font-bold tracking-wider text-xs uppercase bg-euskal-100/70 px-3 py-1 rounded-full">
+            Preguntas Frecuentes
+          </span>
+          <h2 class="font-display text-2xl sm:text-4xl font-extrabold text-stone-900">
+            Resolvemos tus dudas con claridad
+          </h2>
+          <p class="text-stone-600">Todo lo que necesitas saber antes de dar el primer paso.</p>
+        </div>
+
+        <div class="space-y-4" id="faqList">
+          
+          <!-- FAQ 1 -->
+          <div class="border border-stone-200 rounded-2xl overflow-hidden transition">
+            <button onclick="toggleFaq(this)" class="w-full p-5 text-left bg-stone-50 hover:bg-stone-100 flex items-center justify-between font-display font-bold text-stone-900 text-lg">
+              <span>¿Puedo apuntarme si viajo solo/a?</span>
+              <svg class="w-5 h-5 text-stone-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="p-5 text-stone-600 text-sm sm:text-base leading-relaxed bg-white border-t border-stone-100">
+              <strong>¡Por supuesto! De hecho, más del 70% de las personas que se acercan al grupo vienen individualmente.</strong> El propósito central de este proyecto es precisamente brindar un entorno de confianza y compañerismo a quienes no quieren viajar en soledad o cuyos amigos/familiares ya no tienen disponibilidad.
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="border border-stone-200 rounded-2xl overflow-hidden transition">
+            <button onclick="toggleFaq(this)" class="w-full p-5 text-left bg-stone-50 hover:bg-stone-100 flex items-center justify-between font-display font-bold text-stone-900 text-lg">
+              <span>¿Qué compromiso implica asistir a una reunión presencial?</span>
+              <svg class="w-5 h-5 text-stone-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="p-5 text-stone-600 text-sm sm:text-base leading-relaxed bg-white border-t border-stone-100">
+              <strong>Ningún compromiso económico ni de permanencia.</strong> La primera reunión es simplemente para conocernos, tomarnos un café y ver si la propuesta y las personas te encajan. Solo si decides que quieres participar en el viaje se pasa a coordinar las reservas conjuntas.
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="border border-stone-200 rounded-2xl overflow-hidden transition">
+            <button onclick="toggleFaq(this)" class="w-full p-5 text-left bg-stone-50 hover:bg-stone-100 flex items-center justify-between font-display font-bold text-stone-900 text-lg">
+              <span>¿Cómo se pagan los viajes? ¿Hay intermediarios?</span>
+              <svg class="w-5 h-5 text-stone-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="p-5 text-stone-600 text-sm sm:text-base leading-relaxed bg-white border-t border-stone-100">
+              No somos una agencia comercial. Los viajes se autogestionan colaborativamente entre los propios viajeros. Cada persona paga sus billetes de transporte directamente a la compañía y los alojamientos se reservan de común acuerdo buscando el mejor equilibrio entre comodidad, calidad y precio justo.
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="border border-stone-200 rounded-2xl overflow-hidden transition">
+            <button onclick="toggleFaq(this)" class="w-full p-5 text-left bg-stone-50 hover:bg-stone-100 flex items-center justify-between font-display font-bold text-stone-900 text-lg">
+              <span>¿Cómo son los ritmos del día a día durante el viaje?</span>
+              <svg class="w-5 h-5 text-stone-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="p-5 text-stone-600 text-sm sm:text-base leading-relaxed bg-white border-t border-stone-100">
+              Nos gusta viajar sin el agobio de los paquetes turísticos convencionales. No madrugamos de forma extrema salvo necesidad de transporte, programamos paradas suficientes para descansar y tomar algo, y siempre dejamos tiempo libre para que cada cual pueda pasear, descansar o leer a su antojo.
+            </div>
+          </div>
+
+          <!-- FAQ 5 -->
+          <div class="border border-stone-200 rounded-2xl overflow-hidden transition">
+            <button onclick="toggleFaq(this)" class="w-full p-5 text-left bg-stone-50 hover:bg-stone-100 flex items-center justify-between font-display font-bold text-stone-900 text-lg">
+              <span>¿Y si tengo alguna condición física o preferencia alimentaria?</span>
+              <svg class="w-5 h-5 text-stone-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="p-5 text-stone-600 text-sm sm:text-base leading-relaxed bg-white border-t border-stone-100">
+              Esa es la razón fundamental de celebrar reuniones presenciales previas. Se comparten las necesidades particulares con empatía y confidencialidad para elegir alojamientos accesibles, planificar menús adecuados y garantizar que nadie quede rezagado.
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FORMULARIO DE CONTACTO Y REGISTRO -->
+    <section id="contacto" class="py-16 sm:py-24 bg-warm-50">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-xl border border-stone-200">
+          
+          <div class="text-center max-w-2xl mx-auto mb-8 space-y-2">
+            <span class="inline-block text-xs font-bold text-euskal-800 uppercase tracking-widest bg-euskal-100 px-3 py-1 rounded-full">
+              Ponte en Contacto
+            </span>
+            <h2 class="font-display text-2xl sm:text-4xl font-extrabold text-stone-900">
+              Da el primer paso: te invitamos a conocernos
+            </h2>
+            <p class="text-stone-600 text-sm sm:text-base">
+              Rellena este breve formulario y te escribiremos o llamaremos para invitarte al próximo café o darte más detalles sobre el grupo.
+            </p>
+          </div>
+
+          <!-- Formulario -->
+          <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-6">
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              
+              <!-- Nombre -->
+              <div>
+                <label for="nombre" class="block text-sm font-semibold text-stone-800 mb-2">Nombre y Apellidos *</label>
+                <input type="text" id="nombre" name="nombre" required placeholder="Ej: María José / Jon" class="w-full px-4 py-3 rounded-xl border border-stone-300 focus:ring-2 focus:ring-euskal-700 focus:border-euskal-700 outline-none text-stone-900 transition">
+              </div>
+
+              <!-- Teléfono / WhatsApp -->
+              <div>
+                <label for="telefono" class="block text-sm font-semibold text-stone-800 mb-2">Teléfono o WhatsApp *</label>
+                <input type="tel" id="telefono" name="telefono" required placeholder="Ej: 600 000 000" class="w-full px-4 py-3 rounded-xl border border-stone-300 focus:ring-2 focus:ring-euskal-700 focus:border-euskal-700 outline-none text-stone-900 transition">
+              </div>
+
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              
+              <!-- Correo electrónico -->
+              <div>
+                <label for="email" class="block text-sm font-semibold text-stone-800 mb-2">Correo electrónico</label>
+                <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" class="w-full px-4 py-3 rounded-xl border border-stone-300 focus:ring-2 focus:ring-euskal-700 focus:border-euskal-700 outline-none text-stone-900 transition">
+              </div>
+
+              <!-- Ciudad / Provincia -->
+              <div>
+                <label for="ciudad" class="block text-sm font-semibold text-stone-800 mb-2">¿De dónde eres? *</label>
+                <select id="ciudad" name="ciudad" required class="w-full px-4 py-3 rounded-xl border border-stone-300 focus:ring-2 focus:ring-euskal-700 focus:border-euskal-700 outline-none text-stone-900 transition bg-white">
+                  <option value="" disabled selected>Selecciona tu zona habitual</option>
+                  <option value="Bilbao / Bizkaia">Bilbao / Bizkaia</option>
+                  <option value="Donostia / Gipuzkoa">Donostia / Gipuzkoa</option>
+                  <option value="Vitoria-Gasteiz / Araba">Vitoria-Gasteiz / Araba</option>
+                  <option value="Iruña / Navarra">Iruña / Navarra</option>
+                  <option value="Iparralde">Iparralde / Pirineos Atlánticos</option>
+                  <option value="Otra localidad">Otra localidad</option>
+                </select>
+              </div>
+
+            </div>
+
+            <!-- Intereses -->
+            <div>
+              <label for="intereses" class="block text-sm font-semibold text-stone-800 mb-2">¿Qué tipo de viajes te ilusionan más?</label>
+              <input type="text" id="intereses" name="intereses" placeholder="Ej: Rutas culturales y museos, naturaleza y termas, escapadas gastronómicas..." class="w-full px-4 py-3 rounded-xl border border-stone-300 focus:ring-2 focus:ring-euskal-700 focus:border-euskal-700 outline-none text-stone-900 transition">
+            </div>
+
+            <!-- Mensaje adicional -->
+            <div>
+              <label for="mensaje" class="block text-sm font-semibold text-stone-800 mb-2">¿Tienes alguna duda o comentario para la reunión previa?</label>
+              <textarea id="mensaje" name="mensaje" rows="3" placeholder="Coméntanos con total confianza lo que quieras..." class="w-full px-4 py-3 rounded-xl border border-stone-300 focus:ring-2 focus:ring-euskal-700 focus:border-euskal-700 outline-none text-stone-900 transition"></textarea>
+            </div>
+
+            <!-- Privacidad -->
+            <div class="flex items-start gap-2.5 pt-1">
+              <input type="checkbox" id="privacidad" name="privacidad" required class="w-4 h-4 text-euskal-700 border-stone-300 rounded focus:ring-euskal-600 mt-1">
+              <label for="privacidad" class="text-xs text-stone-600 leading-normal">
+                Acepto ser contactado/a únicamente para coordinar las reuniones y actividades de este grupo de viajeros. Tus datos no se cederán a ninguna empresa comercial ni publicitaria.
+              </label>
+            </div>
+
+            <!-- Botón de Envío -->
+            <div class="pt-2">
+              <button type="submit" class="w-full py-4 rounded-xl font-bold text-white bg-euskal-800 hover:bg-euskal-700 shadow-md shadow-euskal-900/20 text-lg transition flex items-center justify-center gap-2">
+                <span>Enviar solicitud y asistir a un café</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </button>
+            </div>
+
+          </form>
+
+          <!-- Mensaje de Éxito Oculto -->
+          <div id="formSuccess" class="hidden mt-6 p-6 rounded-2xl bg-emerald-50 border border-emerald-200 text-center space-y-2">
+            <div class="w-12 h-12 bg-emerald-100 text-emerald-800 rounded-full flex items-center justify-center mx-auto text-2xl font-bold">
+              ✓
+            </div>
+            <h3 class="font-display font-bold text-xl text-emerald-950">¡Eskerrik asko por contactar!</h3>
+            <p class="text-emerald-800 text-sm max-w-md mx-auto">
+              Hemos recibido tu información. Un compañero o compañera del grupo se pondrá en contacto contigo muy pronto para invitarte al próximo café presencial.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- PIE DE PÁGINA (FOOTER) -->
+  <footer class="bg-stone-950 text-stone-400 py-12 border-t border-stone-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6 border-b border-stone-800 pb-8">
+        <div class="flex items-center gap-3 text-center md:text-left">
+          <div class="w-10 h-10 rounded-xl bg-euskal-800 flex items-center justify-center text-white font-bold">
+            🌱
+          </div>
+          <div>
+            <span class="font-display font-bold text-lg text-white">Euskal Viajeros +50</span>
+            <p class="text-xs text-stone-400">Apoyo mutuo, viajes compartidos y reuniones presenciales</p>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-stone-300">
+          <a href="#filosofia" class="hover:text-white transition">Filosofía</a>
+          <a href="#como-funciona" class="hover:text-white transition">Cómo Funciona</a>
+          <a href="#reuniones" class="hover:text-white transition">Reuniones</a>
+          <a href="#faq" class="hover:text-white transition">Preguntas Frecuentes</a>
+          <a href="#contacto" class="hover:text-white transition">Contacto</a>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-stone-500">
+        <p>© 2026 Euskal Viajeros +50. Red colaborativa de personas sin ánimo de lucro.</p>
+        <p class="flex items-center gap-2">
+          <span>Bilbao · Donostia · Gasteiz · Iruña</span>
+          <span>·</span>
+          <span class="text-emerald-400">Elkarrekin bidaiatuz</span>
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT ACCIONES INTERACTIVAS -->
+  <script>
+    // Menú móvil
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('hidden');
+    }
+
+    // Acordeón Preguntas Frecuentes
+    function toggleFaq(button) {
+      const content = button.nextElementSibling;
+      const icon = button.querySelector('svg');
+      
+      const isVisible = !content.classList.contains('hidden');
+      
+      // Cerrar otros acordeones si se desea comportamiento exclusivo
+      document.querySelectorAll('#faqList > div').forEach(item => {
+        const c = item.children[1];
+        const svg = item.children[0].querySelector('svg');
+        if (c && c !== content) {
+          c.classList.add('hidden');
+          if (svg) svg.classList.remove('rotate-180');
+        }
+      });
+
+      if (isVisible) {
+        content.classList.add('hidden');
+        icon.classList.remove('rotate-180');
+      } else {
+        content.classList.remove('hidden');
+        icon.classList.add('rotate-180');
+      }
+    }
+
+    // Inicializar FAQs: abrir la primera, cerrar el resto
+    document.addEventListener('DOMContentLoaded', () => {
+      const faqs = document.querySelectorAll('#faqList > div');
+      faqs.forEach((faq, index) => {
+        const content = faq.children[1];
+        const icon = faq.children[0].querySelector('svg');
+        if (index === 0) {
+          content.classList.remove('hidden');
+          if (icon) icon.classList.add('rotate-180');
+        } else {
+          content.classList.add('hidden');
+        }
+      });
+    });
+
+    // Control de Accesibilidad: Tamaño de Letra
+    function setFontSize(size) {
+      const body = document.body;
+      const btnNormal = document.getElementById('btnTextNormal');
+      const btnLarge = document.getElementById('btnTextLarge');
+
+      if (size === 'large') {
+        body.classList.add('font-size-large');
+        btnLarge.classList.replace('bg-emerald-950', 'bg-emerald-600');
+        btnLarge.classList.replace('text-emerald-300', 'text-white');
+        btnNormal.classList.replace('bg-emerald-600', 'bg-emerald-950');
+        btnNormal.classList.replace('text-white', 'text-emerald-300');
+        localStorage.setItem('ev50_font_size', 'large');
+      } else {
+        body.classList.remove('font-size-large');
+        btnNormal.classList.replace('bg-emerald-950', 'bg-emerald-600');
+        btnNormal.classList.replace('text-emerald-300', 'text-white');
+        btnLarge.classList.replace('bg-emerald-600', 'bg-emerald-950');
+        btnLarge.classList.replace('text-white', 'text-emerald-300');
+        localStorage.setItem('ev50_font_size', 'normal');
+      }
+    }
+
+    // Cargar preferencia de tamaño guardada
+    if (localStorage.getItem('ev50_font_size') === 'large') {
+      setFontSize('large');
+    }
+
+    // Envío del Formulario
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const form = document.getElementById('contactForm');
+      const success = document.getElementById('formSuccess');
+      
+      // Feedback visual
+      form.classList.add('opacity-40', 'pointer-events-none');
+      setTimeout(() => {
+        form.classList.add('hidden');
+        success.classList.remove('hidden');
+        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 500);
+    }
+  </script>
+</body>
+</html>
